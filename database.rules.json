@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "sessions": {
+      "gdba-fair-lovely-2026": {
+        "votes": {
+          ".read": "auth != null",
+          "$voter": {
+            ".write": "auth != null && auth.uid === $voter && newData.exists() && newData.isString() && (newData.val() === 'Continue' || newData.val() === 'Discontinue')"
+          }
+        },
+        "teams": {
+          ".read": "auth != null",
+          "$team": {
+            ".write": "auth != null && $team.matches(/^[1-7]$/) && newData.exists() && ((!data.exists() && newData.child('ownerUid').val() === auth.uid) || (data.exists() && data.child('ownerUid').val() === auth.uid && newData.child('ownerUid').val() === auth.uid))",
+            ".validate": "newData.hasChildren(['ownerUid','value','harm','scene1','scene2','scene3','rationale','digital','ai','visual','updatedAt']) && newData.child('ownerUid').isString() && newData.child('value').isString() && newData.child('value').val().length <= 2000 && newData.child('harm').isString() && newData.child('harm').val().length <= 2000 && newData.child('scene1').isString() && newData.child('scene1').val().length <= 2000 && newData.child('scene2').isString() && newData.child('scene2').val().length <= 2000 && newData.child('scene3').isString() && newData.child('scene3').val().length <= 2000 && newData.child('rationale').isString() && newData.child('rationale').val().length <= 2000 && newData.child('digital').isString() && newData.child('digital').val().length <= 2000 && newData.child('ai').isString() && newData.child('ai').val().length <= 2000 && newData.child('visual').isString() && newData.child('visual').val().length <= 2000 && newData.child('updatedAt').isNumber()"
+          }
+        }
+      }
+    }
+  }
+}
