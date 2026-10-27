@@ -9,3 +9,5 @@ window.FL_FIREBASE_CONFIG = {
   measurementId: "G-G29YZEPYDR"
 };
 window.FL_SESSION = "gdba-fair-lovely-2026";
+
+window.FL_INSTRUCTOR_UID = "REPLACE_WITH_YOUR_FIREBASE_GOOGLE_UID";
